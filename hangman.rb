@@ -32,43 +32,46 @@ end
 
   def make_guess
     if @lives > 0
-      puts "Enter a letter"
+      puts "\nEnter a letter"
       guess = gets.chomp
 
       good_guess = @word.first.include? guess
 
       if guess == "exit"
-        puts "Thank you, come again!"
+        puts "\nThank you, come again!"
       elsif good_guess
-        puts "Yay!"
+        puts "\nYay!"
 
         @correcr_guesses << guess
 
         print_teaser guess
 
         if @word.first == @word_teaser.split.join
-          puts "Wayhey! Smashed it! Run file to play again..."
+          puts "\nWayhey! You smashed it! Run file to play again..."
+          puts ""
         else
           make_guess
         end
 
       else
         @lives -= 1
-        puts "Boooo! You have #{ @lives } lives left. Try again!"
+        puts "\nBoooo! You have #{ @lives } lives left. Try again!"
         make_guess
       end
     else
-      puts "GAME OVER"
+      puts "\nGAME OVER!"
+      puts "\nWAH WAH WAH...."
     end
   end
 
   def begin
     # ask user for a letter
-    puts "New hangman game started..."
-    puts "(Type 'exit' to quit game at anytime)"
+    puts "\nHANGMAN IN TERMINAL"
+    puts "\n(Type 'exit' to quit game at anytime)"
+    puts ""
     print_teaser
 
-    puts "Clue: #{ @word.last }"
+    puts "\nClue: #{ @word.last }"
 
     make_guess
   end
