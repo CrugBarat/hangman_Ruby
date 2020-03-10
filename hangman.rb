@@ -2,7 +2,7 @@ class Hangman
 
   def initialize
     @word = words.sample
-    @lives = 7
+    @lives = 6
     @correcr_guesses = []
     @word_teaser = ""
 
@@ -32,7 +32,7 @@ end
 
   def make_guess
     if @lives > 0
-      puts "\nEnter a letter"
+      puts "\nEnter a letter:"
       guess = gets.chomp
 
       good_guess = @word.first.include? guess
@@ -40,7 +40,8 @@ end
       if guess == "exit"
         puts "\nThank you, come again!"
       elsif good_guess
-        puts "\nYay!"
+        puts "\nYay! Well done. Keep going...."
+        puts ""
 
         @correcr_guesses << guess
 
@@ -61,6 +62,7 @@ end
     else
       puts "\nGAME OVER!"
       puts "\nWAH WAH WAH...."
+      puts ""
     end
   end
 
